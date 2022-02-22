@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <link rel= "stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Music Box</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script id='jsFile' src="{{url_for('static', filename='interactions.js')}}"></script>
+    <script src="https://kit.fontawesome.com/3482ed8156.js" crossorigin="anonymous"></script>
+    <!-- <script>
+        $SCRIPT_ROOT = "{{ request.script_root|tojson }}"";    
+    </script> -->
+</head>
+<body>
+    <h1>PlayMood</h1>
+    <p id="pg-description">tag line / instructions</p>
+    <div class="genre-list">
+        {% for genre in genres %}
+            <button type="button" class="unselected-genre" id="genre-{{loop.index}}" value="{{genre}}">{{ genre }}</button>
+        {% endfor %} 
+    </div>
+    <br>
+    <div class="submit-genres">
+        <input type="submit" id="get-playlist-bttn" name="loadPlaylistBttn" value="Generate Playlist">
+    </div>
+
+    <p id="debug"></p> 
+    <!-- <p>{{test}}</p> -->
+    <div class="recommended-playlist" id="playlist"> 
+        <!-- {% if recommended_tracks %}
+        <ul class="recommended-playlist" id="recommended-tracks">
+        {% for track in recommended_tracks %}
+            <li class="track">
+                <div class="song-title">
+                    <span class="cover-art">
+                        <img src="{{ track['cover_art']['url'] }}">
+                    </span>
+                    <h2>{{ track['name'] }}</h2>
+                </div>
+                <div class="track-info">
+                    {{ track['artists'] }}
+                </div>
+
+                <div class="track-tools">
+                    <a class="track-spotify-url" href="{{ track['spotify_url'] }}">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <a class="preview-track" href="{{ track['sample'] }}">
+                        <i class="fa-solid fa-play"></i>
+                    </a>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+        {% endif %} -->
+    </div> 
+
+</body>

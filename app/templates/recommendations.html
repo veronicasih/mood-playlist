@@ -1,0 +1,40 @@
+<p>{{test}}</p>
+{% if recommended_tracks %}
+<ul class="recommended-playlist" id="recommended-tracks">
+{% for track in recommended_tracks %}
+    <li class="track">
+        <div class="track-flex-container">
+            <div class="track-img flex-box">
+                <!-- <div class="cover-art"> -->
+                    <img class="cover-img" src="{{ track['cover_art']['url'] }}">
+                <!-- </div> -->
+            </div>
+            <div class="track-text flex-box">
+                <h2 class="track-title">{{ track['name'] }}</h2>
+                <div class="track-info">
+                    {{ track['artists'] }}
+                </div>
+            </div>
+            <div class="track-tools flex-box">
+                <a class="track-spotify-url tooltip" href="{{ track['spotify_url'] }}" target="_blank">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <span class="tooltip-text">See track in Spotify.</span>
+                </a>
+                {% if track['sample'] %}
+                <audio class="player" id="player-{{loop.index}}" src="{{ track['sample'] }}"></audio>
+                {% endif %}
+                <a class="preview-track tooltip" id="preview-track-{{loop.index}}" > 
+                    <i class="fa-solid fa-play audio-icon"></i>
+                    {% if track['sample'] %}
+                    <span class="tooltip-text">Listen to preview.</span>
+                    {% else %}
+                    <span class="tooltip-text">Preview is unavailable for this track.</span>
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </li>
+{% endfor %}
+</ul>
+{% endif %}
+
