@@ -1,8 +1,38 @@
+html {
+    /* background: linear-gradient(180deg, #A0FBBF, #ffffff); #95FDF2 */
+    background: linear-gradient(180deg, #ffffff, #12fff7); 
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+}
 h1 {
     text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px;
+}
+h2 {
+    font-size: 22px;
+}
+#instructions{
+    display: flex; 
+    justify-content: center;
+    margin-bottom: 20px;
 }
 #pg-description {
     margin-left: 10px;
+}
+body {
+    font-family: sans-serif;
+}
+@keyframes gradient {
+	0% {
+		background-position: 50% 0%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 50% 0%;
+	}
 }
 
 /* GENRES */
@@ -10,19 +40,39 @@ h1 {
     display: flex;
     flex-flow: wrap;
     justify-content: center;
+    margin-left: 200px; 
+    margin-right: 200px;
+    margin-bottom: 20px;
 }
 .genre-list button {
     margin: 2px;
+    border-radius: 9999px;
+    border-width: 0px;
+    padding: 4px 8px;
+    font-family: inherit;
+    cursor: pointer;
 }
 .unselected-genre {
-    background-color : rgb(166, 236, 253);
+    background-color : #ffffff;
 }
 .selected-genre {
-    background-color : rgb(179, 255, 179)
+    background-color : #b3ffab;
 }
 .submit-genres {
     display: flex; 
     justify-content: center;
+}
+#get-playlist-bttn {
+    background-color: #ffffff;
+    font-family: inherit; 
+    border-width: 0px;
+    margin: 2px;
+    padding: 8px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#get-playlist-bttn::after{
+    background-color: #b3ffab;
 }
 
 /* PLAYLIST */
@@ -32,21 +82,26 @@ ul.recommended-playlist {
 
  /* TRACK  */
  .track {
-    width: 1000px;
+    width: 1200px;
     margin-bottom: 20px;
-    background-color: lightgray;
+    background-color: white;
+    border-radius: 7px;
     margin: 0 auto;
  }
 .track-flex-container {
-    margin: 15px;
+    margin: 20px;
     min-height: 100px;
     display: flex;
     align-items: center;
 }
+.track-img {
+    width: 100px;
+    height: 100px; 
+    margin: 20px 20px 20px 0px;
+}
 .cover-img {
-    width: 100px; 
+    height: 100px; 
     vertical-align: middle;
-    margin: 15px 15px 15px 0px;
 }
 .track-text {
     flex-grow: 5;
@@ -56,7 +111,11 @@ ul.recommended-playlist {
     margin: 0px 0px 5px 0px;
 }
 .track-tools {
-    margin: 15px;
+    margin: 20px;
+}
+.track-icon {
+    color: #000000;
+    font-size: 1.2em;
 }
 .preview-track {
     cursor: pointer;
@@ -68,11 +127,11 @@ ul.recommended-playlist {
 .tooltip .tooltip-text {
     visibility: hidden;
     width: 120px;
-    background-color: lightgrey;
+    background-color: #b3ffab;
     color: black;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 8px 10px;
     position: absolute;
     z-index: 1;
     bottom: 150%;
@@ -80,15 +139,15 @@ ul.recommended-playlist {
     margin-left: -60px;
 } 
 .tooltip .tooltip-text::after {
-content: "";
-position: absolute;
-top: 100%;
-left: 50%;
-margin-left: -5px;
-border-width: 5px;
-border-style: solid;
-border-color: lightgrey transparent transparent transparent;
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #b3ffab transparent transparent transparent;
 }
 .tooltip:hover .tooltip-text {
-visibility: visible;
+    visibility: visible;
 }

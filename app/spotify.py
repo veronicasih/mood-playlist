@@ -11,21 +11,19 @@ def get_available_genres(sp):
 
 # Up to 5 seed values may be provided in any combination of seed_artists, seed_tracks and seed_genres.
 def get_recommendations(sp, selected_genres, available_genres): 
-    print("spotify.py received genre_seeds as ")
-    print(type(selected_genres))
     # if more than 5 genres are selected, default to first 5
     if (len(selected_genres) > 5): 
         selected_genres = selected_genres[0:4]
     # if no genres are selected, default to first available genre -> should there be a message that pops up?
     if (len(selected_genres) == 0): 
-        selected_genres = available_genres[0]
-
+        print('no genres were selected')
+        selected_genres = [available_genres[0]]
+    
     recommendations = sp.recommendations(seed_genres = selected_genres, limit = SPOTIPY_NUM_RECS)['tracks']
     updated_recommendations = clean_up_recommendations(recommendations)
     return updated_recommendations
 
 def clean_up_recommendations(recommendations):
-    print(recommendations[0:5])
     updated_recs = []
     for track in recommendations: 
         artists = get_artists(track['artists'])
