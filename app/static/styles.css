@@ -8,7 +8,14 @@ h1 {
     text-align: center;
     font-family: 'Space Grotesk', sans-serif;
     font-size: 40px;
+    font-weight: 525;
 }
+u {
+    text-decoration-color: #b3ffab !important;
+}
+/* mark {
+    background-color: #b3ffab;
+} */
 h2 {
     font-size: 22px;
 }
@@ -63,7 +70,7 @@ body {
     justify-content: center;
 }
 #get-playlist-bttn {
-    background-color: #ffffff;
+    background-color: #b3ffab;;
     font-family: inherit; 
     border-width: 0px;
     margin: 2px;
@@ -71,10 +78,6 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-#get-playlist-bttn::after{
-    background-color: #b3ffab;
-}
-
 /* PLAYLIST */
 ul.recommended-playlist {
     list-style-type: none;
@@ -137,6 +140,7 @@ ul.recommended-playlist {
     bottom: 150%;
     left: 50%;
     margin-left: -60px;
+    font-size: 13px;
 } 
 .tooltip .tooltip-text::after {
     content: "";

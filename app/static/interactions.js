@@ -14,7 +14,16 @@ $(document).ready(function() {
     });
     
     $('#get-playlist-bttn').on('click', function() {
-        // $(this).addClass('animate_animated animate__flash');
+        var button = $(this);
+        if (! $(this).hasClass('animate__animated')) {
+            $(this).addClass('animate__animated animate__fadeIn');
+        } else {
+            $(this).removeClass('animate__animated animate__fadeIn');
+            setTimeout(function(){
+                button.addClass('animate__animated animate__fadeIn');
+            }, 300);
+        }
+
         var selectedGenres = $('.selected-genre')
             .map(function(){
                 return $(this).text().trim();
