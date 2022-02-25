@@ -16,7 +16,6 @@ def get_recommendations(sp, selected_genres, available_genres):
         selected_genres = selected_genres[0:4]
     # if no genres are selected, default to first available genre -> should there be a message that pops up?
     if (len(selected_genres) == 0): 
-        print('no genres were selected')
         selected_genres = [available_genres[0]]
     
     recommendations = sp.recommendations(seed_genres = selected_genres, limit = SPOTIPY_NUM_RECS)['tracks']

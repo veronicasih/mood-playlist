@@ -16,7 +16,6 @@ def create_app():
             print('POST request received', file = sys.stdout)
             selectedGenres = request.get_json()['selectedGenres']    
             playlist_recs = spotify.get_recommendations(spotipy_object, selectedGenres, available_genres) # this returns a list of dictionaries where each dictionay corresponds to a recommended track
-            print(playlist_recs, file = sys.stdout)
             response = make_response(render_template('recommendations.html', genres = available_genres, recommended_tracks = playlist_recs, test = "data type issue?"))      
             return response
         else: 
