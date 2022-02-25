@@ -67,13 +67,3 @@ $(document).ready(function() {
         }
     });
 });
-
-// function playAudio(playerNum) {
-//     console.log(playerNum);
-//     var player = document.getElementById("player-" + playerNum);
-//     if (player.paused) {
-//         player.play();
-//     } else {
-//         player.pause();
-//     }
-// }

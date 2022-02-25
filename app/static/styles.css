@@ -1,6 +1,18 @@
+:root {
+    --bkgd-gradient-color1: #ffffff;
+    --bkgd-gradient-color2: #12fff7;
+    --body-text-color: #000000; 
+    --underline-color: #b3ffab;
+    --selected-genre-color: #b3ffab;
+    --unselected-genre-color: #ffffff;
+    --generate-playlist-color: #b3ffab;
+    --tooltip-color: #b3ffab; 
+    --tooltip-text-color: #000000;
+    --track-container-color: #ffffff; 
+    --track-icon-color: #000000;
+}
 html {
-    /* background: linear-gradient(180deg, #A0FBBF, #ffffff); #95FDF2 */
-    background: linear-gradient(180deg, #ffffff, #12fff7); 
+    background: linear-gradient(180deg, var(--bkgd-gradient-color1), var(--bkgd-gradient-color2)); 
 	background-size: 400% 400%;
 	animation: gradient 5s ease infinite;
 }
@@ -11,11 +23,8 @@ h1 {
     font-weight: 525;
 }
 u {
-    text-decoration-color: #b3ffab !important;
+    text-decoration-color: var(--underline-color) !important;
 }
-/* mark {
-    background-color: #b3ffab;
-} */
 h2 {
     font-size: 22px;
 }
@@ -29,6 +38,7 @@ h2 {
 }
 body {
     font-family: sans-serif;
+    color: var(--body-text-color);
 }
 @keyframes gradient {
 	0% {
@@ -60,17 +70,17 @@ body {
     cursor: pointer;
 }
 .unselected-genre {
-    background-color : #ffffff;
+    background-color : var(--unselected-genre-color);
 }
 .selected-genre {
-    background-color : #b3ffab;
+    background-color : var(--selected-genre-color);
 }
 .submit-genres {
     display: flex; 
     justify-content: center;
 }
 #get-playlist-bttn {
-    background-color: #b3ffab;;
+    background-color: var(--generate-playlist-color);
     font-family: inherit; 
     border-width: 0px;
     margin: 2px;
@@ -87,7 +97,7 @@ ul.recommended-playlist {
  .track {
     width: 1200px;
     margin-bottom: 20px;
-    background-color: white;
+    background-color: var(--track-container-color);
     border-radius: 7px;
     margin: 0 auto;
  }
@@ -117,7 +127,7 @@ ul.recommended-playlist {
     margin: 20px;
 }
 .track-icon {
-    color: #000000;
+    color: var(--track-icon-color);
     font-size: 1.2em;
 }
 .preview-track {
@@ -130,8 +140,8 @@ ul.recommended-playlist {
 .tooltip .tooltip-text {
     visibility: hidden;
     width: 120px;
-    background-color: #b3ffab;
-    color: black;
+    background-color: var(--tooltip-color);
+    color: var(--tooltip-text-color);
     text-align: center;
     border-radius: 6px;
     padding: 8px 10px;
@@ -150,7 +160,7 @@ ul.recommended-playlist {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #b3ffab transparent transparent transparent;
+    border-color: var(--tooltip-color) transparent transparent transparent;
 }
 .tooltip:hover .tooltip-text {
     visibility: visible;
