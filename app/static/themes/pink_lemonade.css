@@ -1,0 +1,27 @@
+:root.pink_lemonade {
+    --bkgd-gradient-color1: #fad0c4;
+    --bkgd-gradient-color2: #ffd1ff;
+    --pg-title-color: #000000;
+
+    --theme-title-color: #000000;
+    --theme-dropdown-color: #ffffff;
+    --theme-dropdown-border-color: #ffffff;
+    --theme-instructions-color: #000000;
+    --theme-item-color: #FFFEB8;
+    --theme-text-color: #000000;
+    --theme-divider-color: #ffffff;
+    --theme-hover-color: #ffd1ff;
+    --theme-text-hover-color: #000000;
+
+    --body-text-color: #000000; 
+    --underline-color: #FFFEB8;
+    --genre-text-color: #000000;
+    --selected-genre-color: #FFFEB8;
+    --unselected-genre-color: #ffffff;
+    --generate-playlist-color: #FFFEB8;
+    --generate-playlist-text-color: #000000;
+    --tooltip-color: #FFFEB8; 
+    --tooltip-text-color: #000000;
+    --track-container-color: #ffffff; 
+    --track-text-color: #000000;
+}

@@ -1,0 +1,27 @@
+:root.taro{
+    --bkgd-gradient-color1: #6c687f;
+    --bkgd-gradient-color2: #6c687f;
+    --pg-title-color: #ffffff;
+
+    --theme-title-color: #ffffff;
+    --theme-dropdown-color: #6c687f;
+    --theme-dropdown-border-color: #6c687f;
+    --theme-instructions-color: #6c687f;
+    --theme-item-color: #E4DBFF;
+    --theme-text-color: #6c687f;
+    --theme-divider-color: #6c687f;
+    --theme-hover-color: #6c687f;
+    --theme-text-hover-color: #E4DBFF;
+
+    --body-text-color: #ffffff; 
+    --underline-color: #E4DBFF;
+    --genre-text-color: #6c687f;
+    --selected-genre-color: #E4DBFF;
+    --unselected-genre-color: #ffffff;
+    --generate-playlist-color: #E4DBFF;
+    --generate-playlist-text-color: #6c687f;
+    --tooltip-color: #E4DBFF; 
+    --tooltip-text-color: #6c687f;
+    --track-container-color: #ffffff; 
+    --track-text-color: #6c687f;
+}

@@ -1,0 +1,27 @@
+:root.espresso{
+    --bkgd-gradient-color1: #584036;
+    --bkgd-gradient-color2: #392428;
+    --pg-title-color: #8D614D;
+
+    --theme-title-color: #8D614D;
+    --theme-dropdown-color: #584036;
+    --theme-dropdown-border-color: #584036;
+    --theme-instructions-color: #F2E3D8;
+    --theme-item-color: #F2E3D8;
+    --theme-text-color: #584036;
+    --theme-divider-color: #584036;
+    --theme-hover-color: #584036;
+    --theme-text-hover-color: #F2E3D8;
+
+    --body-text-color: #F2E3D8; 
+    --underline-color: #F2E3D8;
+    --genre-text-color: #392428;
+    --selected-genre-color: #8D614D;
+    --unselected-genre-color: #F2E3D8;
+    --generate-playlist-color: #8D614D;
+    --generate-playlist-text-color: #392428;
+    --tooltip-color: #F2E3D8; 
+    --tooltip-text-color: #392428;
+    --track-container-color: #8D614D; 
+    --track-text-color: #F2E3D8;
+}

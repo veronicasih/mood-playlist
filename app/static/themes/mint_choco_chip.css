@@ -1,0 +1,27 @@
+:root.mint_choco_chip {
+    --bkgd-gradient-color1: #CBE7CE;
+    --bkgd-gradient-color2: #E6FFF2;
+    --pg-title-color: #3B342E;
+
+    --theme-title-color: #3B342E;
+    --theme-dropdown-color: #E6FFF2;
+    --theme-dropdown-border-color: #E6FFF2;
+    --theme-instructions-color: #3B342E;
+    --theme-item-color: #8AFFE8;
+    --theme-text-color: #3B342E;
+    --theme-divider-color: #E6FFF2;
+    --theme-hover-color: #3B342E;
+    --theme-text-hover-color: #8AFFE8;
+
+    --body-text-color: #3B342E; 
+    --underline-color: #8AFFE8;
+    --genre-text-color: #3B342E;
+    --selected-genre-color: #8AFFE8;
+    --unselected-genre-color: #E6FFF2;
+    --generate-playlist-color: #8AFFE8;
+    --generate-playlist-text-color: #3B342E;
+    --tooltip-color: #8AFFE8; 
+    --tooltip-text-color: #3B342E;
+    --track-container-color: #3B342E; 
+    --track-text-color: #E6FFF2;
+}

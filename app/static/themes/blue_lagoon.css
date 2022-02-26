@@ -1,0 +1,27 @@
+:root.blue_lagoon {
+    --bkgd-gradient-color1: #ffffff;
+    --bkgd-gradient-color2: #12fff7;
+    --pg-title-color: #000000;
+
+    --theme-title-color: #000000;
+    --theme-dropdown-color: #ffffff;
+    --theme-dropdown-border-color: #ffffff;
+    --theme-instructions-color: #000000;
+    --theme-item-color: #b3ffab;
+    --theme-text-color: #000000;
+    --theme-divider-color: #fdfcfb;
+    --theme-hover-color: #12fff7;
+    --theme-text-hover-color: #000000;
+
+    --body-text-color: #000000; 
+    --underline-color: #b3ffab;
+    --genre-text-color: #000000;
+    --selected-genre-color: #b3ffab;
+    --unselected-genre-color: #ffffff;
+    --generate-playlist-color: #b3ffab;
+    --generate-playlist-text-color: #000000;
+    --tooltip-color: #b3ffab; 
+    --tooltip-text-color: #000000;
+    --track-container-color: #ffffff; 
+    --track-text-color: #000000;
+}
