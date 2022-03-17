@@ -1,2 +1,2 @@
-# mood-playlist
-Discover new songs on Spotify that fit your mood perfectly!
+# sound cafe
+Select some genres and discover your new favorite songs on Spotify!
