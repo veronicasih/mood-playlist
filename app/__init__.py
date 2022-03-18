@@ -9,9 +9,9 @@ def create_app():
 
     @app.route('/', methods = ['GET', 'POST'])
     def index(): 
-        return "hello"
-        # spotipy_object = spotify.connect_spotify()
-        # available_genres = spotify.get_available_genres(spotipy_object)
+        spotipy_object = spotify.connect_spotify()
+        available_genres = spotify.get_available_genres(spotipy_object)
+        return render_template('index.html', genres = available_genres, themes = app.config['THEMES'])
         # playlist_recs = None 
         # if request.method == 'POST':
         #     print('POST request received', file = sys.stdout)
