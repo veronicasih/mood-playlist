@@ -48,9 +48,9 @@ def create_app():
             auth_url = auth_manager.get_authorize_url()
             return f'<h2><a href="{auth_url}">Sign in</a></h2>'
         
+        print("YOOO", request.args)
         if request.args.get("code"):
             # Step 3. Being redirected from Spotify auth page
-            print("YOOO", request.args)
             auth_manager.get_access_token(request.args.get("code"))
 
             return redirect('/')
