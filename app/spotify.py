@@ -4,6 +4,7 @@ from app.config import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIREC
 
 def connect_spotify():
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET, redirect_uri=SPOTIPY_REDIRECT_URI, scope=SPOTIPY_SCOPE, cache_path = SPOTIPY_OAUTH_CACHE))
+    print(sp)
     return get_token(sp)
 
 def get_token(sp):
