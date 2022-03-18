@@ -40,12 +40,16 @@ def create_app():
                                                     scope=SPOTIPY_SCOPE,
                                                     cache_handler=cache_handler, 
                                                     show_dialog=True)
-
+        print("HI")
+        print(auth_manager)
         if request.args.get("code"):
             # Step 3. Being redirected from Spotify auth page
             print(auth_manager.get_access_token(as_dict=True))
             auth_manager.get_access_token(request.args.get("code"))
             return redirect('/')
+        else:
+            print(auth_manager.get_access_token(as_dict=True))
+
 
         if not auth_manager.validate_token(cache_handler.get_cached_token()):
             # Step 2. Display sign in link when no token
