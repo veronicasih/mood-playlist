@@ -3,9 +3,10 @@ from spotipy.oauth2 import SpotifyOAuth
 from app.config import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, SPOTIPY_SCOPE, SPOTIPY_OAUTH_CACHE, SPOTIPY_NUM_RECS
 
 def connect_spotify():
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET, redirect_uri=SPOTIPY_REDIRECT_URI, scope=SPOTIPY_SCOPE, cache_path = SPOTIPY_OAUTH_CACHE))
-    print(sp)
-    return sp
+    # sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET, redirect_uri=SPOTIPY_REDIRECT_URI, scope=SPOTIPY_SCOPE, cache_path = SPOTIPY_OAUTH_CACHE))
+    sp_oauth = SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET, redirect_uri=SPOTIPY_REDIRECT_URI, scope=SPOTIPY_SCOPE, cache_path = SPOTIPY_OAUTH_CACHE)
+    print(sp_oauth)
+    return get_token(sp_oauth)
 
 def get_token(sp):
     # used https://stackoverflow.com/questions/25711711/spotipy-authorization-code-flow 
