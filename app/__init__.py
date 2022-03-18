@@ -34,7 +34,10 @@ def create_app():
             session['uuid'] = str(uuid.uuid4())
 
         cache_handler = spotipy.cache_handler.CacheFileHandler(cache_path=session_cache_path())
-        auth_manager = spotipy.oauth2.SpotifyOAuth(scope=SPOTIPY_SCOPE,
+        auth_manager = spotipy.oauth2.SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID, 
+                                                    client_secret=SPOTIPY_CLIENT_SECRET, 
+                                                    redirect_uri=SPOTIPY_REDIRECT_URI,
+                                                    scope=SPOTIPY_SCOPE,
                                                     cache_handler=cache_handler, 
                                                     show_dialog=True)
 
@@ -57,7 +60,7 @@ def create_app():
         if request.method == 'POST':
             print('POST request received', file = sys.stdout)
             selectedGenres = request.get_json()['selectedGenres']    
-            playlist_recs = spotify.get_recommendations(spotipy_object, selectedGenres, available_genres) # this returns a list of dictionaries where each dictionay corresponds to a recommended track
+            playlist_recs = spotify.get_recommendations(spotipy_obj, selectedGenres, available_genres) # this returns a list of dictionaries where each dictionay corresponds to a recommended track
             return render_template('recommendations.html', genres = available_genres, themes = app.config['THEMES'], recommended_tracks = playlist_recs)
         else: 
             return render_template('index.html', genres = available_genres, themes = app.config['THEMES'])
