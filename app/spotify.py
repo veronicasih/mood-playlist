@@ -1,10 +1,22 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-from app.config import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, SPOTIPY_SCOPE, SPOTIPY_NUM_RECS
+from app.config import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, SPOTIPY_SCOPE, SPOTIPY_OAUTH_CACHE, SPOTIPY_NUM_RECS
 
 def connect_spotify():
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET, redirect_uri=SPOTIPY_REDIRECT_URI, scope=SPOTIPY_SCOPE))
-    return sp
+    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET, redirect_uri=SPOTIPY_REDIRECT_URI, scope=SPOTIPY_SCOPE, cache_path = SPOTIPY_OAUTH_CACHE))
+    return get_token(sp)
+
+def get_token(sp):
+    # used https://stackoverflow.com/questions/25711711/spotipy-authorization-code-flow 
+    token = sp.get_cached_token()
+    access_token = token.get('access_token')
+
+    if access_token:
+        print("Access token available!")
+        sp_obj = spotipy.Spotify(access_token)
+        return sp_obj
+    else:
+        return None
 
 def get_available_genres(sp):
     return sp.recommendation_genre_seeds()['genres']
