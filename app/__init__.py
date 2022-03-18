@@ -44,11 +44,11 @@ def create_app():
         print(auth_manager)
         if request.args.get("code"):
             # Step 3. Being redirected from Spotify auth page
-            print(auth_manager.get_access_token(as_dict=True))
+            print("Yo", auth_manager.get_access_token(as_dict=True))
             auth_manager.get_access_token(request.args.get("code"))
+            
             return redirect('/')
-        else:
-            print(auth_manager.get_access_token(as_dict=True))
+       
 
 
         if not auth_manager.validate_token(cache_handler.get_cached_token()):
