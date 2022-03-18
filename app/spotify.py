@@ -9,8 +9,8 @@ def connect_spotify():
 
 def get_token(sp):
     # used https://stackoverflow.com/questions/25711711/spotipy-authorization-code-flow 
-    token = sp.get_cached_token()
-    access_token = token.get('access_token')
+    access_token = sp.get_access_token()
+    # access_token = token.get('access_token')
 
     if access_token:
         print("Access token available!")

@@ -9,7 +9,6 @@ def create_app():
     @app.route('/', methods = ['GET', 'POST'])
     def index(): 
         spotipy_object = spotify.connect_spotify()
-        spotipy_token = spotify.get_token(spotipy_object)
         available_genres = spotify.get_available_genres(spotipy_object)
         if request.method == 'POST':
             print('POST request received', file = sys.stdout)
