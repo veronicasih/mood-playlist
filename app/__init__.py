@@ -43,6 +43,7 @@ def create_app():
 
         if request.args.get("code"):
             # Step 3. Being redirected from Spotify auth page
+            print(auth_manager.get_access_token(as_dict=True))
             auth_manager.get_access_token(request.args.get("code"))
             return redirect('/')
 
@@ -53,7 +54,7 @@ def create_app():
 
         # Step 4. Signed in, display data
         spotipy_obj = spotipy.Spotify(auth_manager=auth_manager)
-
+        print(spotipy_obj)
         #####
 
         available_genres = spotify.get_available_genres(spotipy_obj)
