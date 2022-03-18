@@ -67,3 +67,8 @@ $(document).ready(function() {
         }
     });
 });
+
+function changeTheme(themeId, themeName) {
+    document.documentElement.className = themeId;
+    document.getElementById("theme-dropdown-title").innerHTML = themeName;
+}

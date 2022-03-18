@@ -1,27 +1,15 @@
 :root, :root.latte {
     --bkgd-gradient-color1: #fdfcfb;
     --bkgd-gradient-color2: #e2d1c3;
-    --pg-title-color: #635C56;
+    --accent-color: #E9E1FC;
+
+    --main-item-color: #fdfcfb;
+
+    --body-text-color: #635C56;
+    --secondary-text-color: #635C56;
 
     --theme-title-color: #635C56;
     --theme-dropdown-color: #fdfcfb;
-    --theme-dropdown-border-color: #fdfcfb;
-    --theme-instructions-color: #635C56;
-    --theme-item-color: #635C56;
-    --theme-text-color: #fdfcfb;
-    --theme-divider-color: #fdfcfb;
     --theme-hover-color: #E9E1FC;
-    --theme-text-hover-color: #635C56;
-
-    --body-text-color: #635C56; 
-    --underline-color: #E9E1FC;
-    --genre-text-color: #635C56;
-    --selected-genre-color: #E9E1FC;
-    --unselected-genre-color: #fdfcfb;
-    --generate-playlist-color: #E9E1FC;
-    --generate-playlist-text-color: #635C56;
-    --tooltip-color: #E9E1FC; 
-    --tooltip-text-color: #635C56;
-    --track-container-color: #fdfcfb; 
-    --track-text-color: #635C56;
+    --theme-hover-text-color: #635C56;
 }

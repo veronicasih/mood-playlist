@@ -1,27 +1,15 @@
 :root.matcha{
     --bkgd-gradient-color1: #c1dfc4;
     --bkgd-gradient-color2: #deecdd;
-    --pg-title-color: #525E53;
+    --accent-color: #FFD4ED;
+
+    --main-item-color: #deecdd;
+
+    --body-text-color: #525E53; 
+    --secondary-text-color: #525E53;
 
     --theme-title-color: #525E53;
     --theme-dropdown-color: #deecdd;
-    --theme-dropdown-border-color: #deecdd;
-    --theme-instructions-color: #525E53;
-    --theme-item-color: #FFD4ED;
-    --theme-text-color: #525E53;
-    --theme-divider-color: #deecdd;
     --theme-hover-color: #525E53;
-    --theme-text-hover-color: #FFD4ED;
-
-    --body-text-color: #525E53; 
-    --underline-color: #FFD4ED; 
-    --genre-text-color: #525E53;
-    --selected-genre-color: #FFD4ED;
-    --unselected-genre-color: #deecdd;
-    --generate-playlist-color: #FFD4ED;
-    --generate-playlist-text-color: #525E53;
-    --tooltip-color: #FFD4ED; 
-    --tooltip-text-color: #525E53;
-    --track-container-color: #deecdd; 
-    --track-text-color: #525E53;
+    --theme-hover-text-color: #deecdd;
 }
