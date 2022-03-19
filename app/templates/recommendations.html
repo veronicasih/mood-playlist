@@ -18,7 +18,7 @@
                     <span class="tooltip-text">See track in Spotify.</span>
                 </a>
                 {% if track['sample'] %}
-                <audio class="player" id="player-{{loop.index}}" src="{{ track['sample'] }}"></audio>
+                <audio class="player" id="player-{{loop.index}}" src="{{ track['sample'] }}" onended="trackSampleEnded('preview-track-{{loop.index}}')"></audio>
                 {% endif %}
                 <a class="preview-track tooltip" id="preview-track-{{loop.index}}" > 
                     <i class=" track-icon fa-solid fa-play audio-icon"></i>

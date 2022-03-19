@@ -23,13 +23,12 @@
 <main class="container-main">
     <div class="top-menu">
         {% block mainmenu %}
-        <div class="menu-item" id="signout">
-            <span id="signout-label">sign out</span>
-            <a class="menu-item-icon" href="/sign_out">
-                <i class="fa-solid fa-right-from-bracket"></i>
+        <!-- <div class="menu-item" id="signout">
+            <span id="signout-label">about</span>
+            <a class="menu-item-icon" href="/about" target="_blank">
+                <i class="fa-solid fa-circle-info"></i>
             </a>
-        </div>
-        {% endblock %}
+        </div> -->
         <div class="menu-item" id="project-github">
             <span id="github-label">github</span>
             <a class="menu-item-icon" href="https://github.com/veronicasih/sound-cafe" target="_blank">
@@ -51,13 +50,17 @@
             {% endfor %}
             </div>
         </div>
+        {% endblock %}
     </div>
     {% block title %}
     <h1 class="animate__animated animate__swing"> <i>sound</i> <span><u>cafe</u></span> </h1>
     {% endblock %}
     {% block content %}
-    <div id="instructions">
-        <p id="pg-description">Select up to five genres and discover your new favorite songs!</p>
+    <div class="flex-parent-center" id="instructions">
+        <p class="intro">Explore music genres and discover your new favorite songs on the Sound Cafe! Select up to five genres, and let the Sound Cafe find you the perfect playlist. Don't forget to choose a theme that matches your favorite drink!</p>
+    </div>
+    <div class="flex-parent-center" id="abt-me">
+        <p class="intro">A project brought to you by Veronica Sih. Send me an <mark><a href="mailto:veronicasih18@gmail.com">email</a></mark> or find me on <mark><a href="https://www.linkedin.com/in/veronicasih/">LinkedIn</a></mark>.</p>
     </div>
     <div class="genre-list">
         {% for genre in genres %}

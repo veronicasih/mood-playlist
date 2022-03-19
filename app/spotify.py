@@ -1,6 +1,11 @@
 import spotipy
 from app.config import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, SPOTIPY_SCOPE, SPOTIPY_OAUTH_CACHE, SPOTIPY_NUM_RECS
 
+def connect_spotipy(): 
+    auth_manager = spotipy.SpotifyClientCredentials(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET)
+    sp = spotipy.Spotify(auth_manager=auth_manager)
+    return sp
+    
 def get_available_genres(sp):
     return sp.recommendation_genre_seeds()['genres']
 

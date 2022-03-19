@@ -72,3 +72,8 @@ function changeTheme(themeId, themeName) {
     document.documentElement.className = themeId;
     document.getElementById("theme-dropdown-title").innerHTML = themeName;
 }
+
+function trackSampleEnded(trackId) {
+    var audioIcon = $('#' + trackId).children(".audio-icon")[0];
+    audioIcon.className = "track-icon fa-solid fa-play audio-icon";
+}

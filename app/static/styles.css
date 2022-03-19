@@ -27,6 +27,8 @@ a {
 }
 p {
     text-align: center;
+    margin-top: 0em;
+    margin-bottom: 1em;
 }
 mark {
     background-color: var(--accent-color);
@@ -35,11 +37,8 @@ mark {
     display: flex;
     justify-content: center;
 }
-.login-intro {
+.intro {
     max-width: 60%;
-}
-#login-button {
-    margin-top: 20px;
 }
 h1 {
     text-align: center;
@@ -50,14 +49,6 @@ h1 {
 u {
     text-decoration-color: var(--accent-color) !important;
 }
-#instructions{
-    display: flex; 
-    justify-content: center;
-    margin-bottom: 20px;
-}
-#pg-description {
-    margin-left: 10px;
-}
 /* MENU */
 .top-menu {
     display: flex;
@@ -67,9 +58,9 @@ u {
 .menu-item {
     margin-right: 30px;
 }
-#signout {
+/* #signout {
     margin-right: 50px;
-}
+} */
 
 /* THEMES  */
 #theme-dropdown {
@@ -137,9 +128,7 @@ u {
     display: flex;
     flex-flow: wrap;
     justify-content: center;
-    margin-left: 200px; 
-    margin-right: 200px;
-    margin-bottom: 20px;
+    margin: 20px 200px 20px 200px;
 }
 .genre-list button {
     margin: 2px;
@@ -160,13 +149,15 @@ u {
     display: flex; 
     justify-content: center;
 }
+#get-playlist-bttn {
+    margin-bottom: 20px;
+}
 .main-button {
     background-color: var(--accent-color);
     color: var(--secondary-text-color);
     font-family: inherit; 
     font-size: 1em;
     border-width: 0px;
-    margin: 2px;
     padding: 8px 25px;
     border-radius: 5px;
     cursor: pointer;
