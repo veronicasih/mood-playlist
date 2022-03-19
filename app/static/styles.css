@@ -136,7 +136,7 @@ body {
     display: flex; 
     justify-content: center;
 }
-#get-playlist-bttn {
+.main-button {
     background-color: var(--accent-color);
     color: var(--secondary-text-color);
     font-family: inherit; 

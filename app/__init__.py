@@ -1,3 +1,69 @@
+import os
+import sys
+from flask import Flask, session, request, redirect, render_template
+from flask_session import Session
+import spotipy
+import uuid
+from app.config import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, SPOTIPY_SCOPE, SPOTIPY_OAUTH_CACHE, SPOTIPY_NUM_RECS
+from app import spotify 
+
+# def create_app():
+if not os.path.exists(SPOTIPY_OAUTH_CACHE):
+    os.makedirs(SPOTIPY_OAUTH_CACHE)
+
+def session_cache_path():
+    return SPOTIPY_OAUTH_CACHE + session.get('uuid')
+
+def create_app():
+    app = Flask('app')
+    app.config.from_pyfile('config.py', silent = True)
+    app.config['SECRET_KEY'] = os.urandom(64)
+    app.config['SESSION_TYPE'] = 'filesystem'
+    app.config['SESSION_FILE_DIR'] = './.flask_session/'
+    Session(app)
+
+    @app.route('/', methods = ['GET', 'POST'])
+    def index():
+        if not session.get('uuid'):
+            # Step 1. Visitor is unknown, give random ID
+            session['uuid'] = str(uuid.uuid4())
+
+        cache_handler = spotipy.cache_handler.CacheFileHandler(cache_path=session_cache_path())
+        auth_manager = spotipy.oauth2.SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
+                                                    client_secret=SPOTIPY_CLIENT_SECRET,
+                                                    redirect_uri=SPOTIPY_REDIRECT_URI,
+                                                    scope=SPOTIPY_SCOPE,
+                                                    cache_handler=cache_handler, 
+                                                    show_dialog=True)
+
+        if request.args.get("code"):
+            # Step 3. Being redirected from Spotify auth page
+            auth_manager.get_access_token(request.args.get("code"))
+            return redirect('/')
+
+        if not auth_manager.validate_token(cache_handler.get_cached_token()):
+            # Step 2. Display sign in link when no token
+            auth_url = auth_manager.get_authorize_url()
+            return render_template('login.html', auth_url=auth_url)
+
+        # Step 4. Signed in, display data
+        spotipy_obj = spotipy.Spotify(auth_manager=auth_manager)
+
+        available_genres = spotify.get_available_genres(spotipy_obj)
+        if request.method == 'POST':
+            print('POST request received', file = sys.stdout)
+            selectedGenres = request.get_json()['selectedGenres']    
+            playlist_recs = spotify.get_recommendations(spotipy_obj, selectedGenres, available_genres) # this returns a list of dictionaries where each dictionay corresponds to a recommended track
+            return render_template('recommendations.html', genres = available_genres, themes = app.config['THEMES'], recommended_tracks = playlist_recs)
+        else: 
+            return render_template('index.html', genres = available_genres, themes = app.config['THEMES'])
+
+    return app
+
+if __name__ == '__main__':
+    app = create_app()
+    app.run(threaded=True, host="localhost",port=5000)
+
 # from flask import Flask, render_template, request, redirect, session
 # from flask_session import Session
 # import sys
@@ -68,73 +134,3 @@
 #             return render_template('index.html', genres = available_genres, themes = app.config['THEMES'])
             
 #     return app
-
-import os
-import sys
-from flask import Flask, session, request, redirect, render_template
-from flask_session import Session
-import spotipy
-import uuid
-from app.config import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, SPOTIPY_SCOPE, SPOTIPY_OAUTH_CACHE, SPOTIPY_NUM_RECS
-from app import spotify 
-
-# def create_app():
-if not os.path.exists(SPOTIPY_OAUTH_CACHE):
-    os.makedirs(SPOTIPY_OAUTH_CACHE)
-
-def session_cache_path():
-    return SPOTIPY_OAUTH_CACHE + session.get('uuid')
-
-def create_app():
-    app = Flask('app')
-    app.config.from_pyfile('config.py', silent = True)
-    app.config['SECRET_KEY'] = os.urandom(64)
-    app.config['SESSION_TYPE'] = 'filesystem'
-    app.config['SESSION_FILE_DIR'] = './.flask_session/'
-    Session(app)
-
-    @app.route('/', methods = ['GET', 'POST'])
-    def index():
-        if not session.get('uuid'):
-            # Step 1. Visitor is unknown, give random ID
-            session['uuid'] = str(uuid.uuid4())
-
-        cache_handler = spotipy.cache_handler.CacheFileHandler(cache_path=session_cache_path())
-        auth_manager = spotipy.oauth2.SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
-                                                    client_secret=SPOTIPY_CLIENT_SECRET,
-                                                    redirect_uri=SPOTIPY_REDIRECT_URI,
-                                                    scope=SPOTIPY_SCOPE,
-                                                    cache_handler=cache_handler, 
-                                                    show_dialog=True)
-
-        if request.args.get("code"):
-            # Step 3. Being redirected from Spotify auth page
-            auth_manager.get_access_token(request.args.get("code"))
-            return redirect('/')
-
-        if not auth_manager.validate_token(cache_handler.get_cached_token()):
-            # Step 2. Display sign in link when no token
-            auth_url = auth_manager.get_authorize_url()
-            return f'<h2><a href="{auth_url}">Sign in</a></h2>'
-
-        # Step 4. Signed in, display data
-        spotipy_obj = spotipy.Spotify(auth_manager=auth_manager)
-
-        available_genres = spotify.get_available_genres(spotipy_obj)
-        if request.method == 'POST':
-            print('POST request received', file = sys.stdout)
-            selectedGenres = request.get_json()['selectedGenres']    
-            playlist_recs = spotify.get_recommendations(spotipy_obj, selectedGenres, available_genres) # this returns a list of dictionaries where each dictionay corresponds to a recommended track
-            return render_template('recommendations.html', genres = available_genres, themes = app.config['THEMES'], recommended_tracks = playlist_recs)
-        else: 
-            return render_template('index.html', genres = available_genres, themes = app.config['THEMES'])
-        # return f'<h2>Hi {spotipy_obj.me()["display_name"]}, ' \
-        #     # f'<small><a href="/sign_out">[sign out]<a/></small></h2>' \
-        #     # f'<a href="/playlists">my playlists</a> | ' \
-        #     # f'<a href="/currently_playing">currently playing</a> | ' \
-        #     # f'<a href="/current_user">me</a>' \
-    return app
-
-if __name__ == '__main__':
-    app = create_app()
-    app.run(threaded=True, host="localhost",port=5000)

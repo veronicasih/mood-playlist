@@ -1,53 +1,6 @@
 import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+# from spotipy.oauth2 import SpotifyOAuth
 from app.config import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, SPOTIPY_SCOPE, SPOTIPY_OAUTH_CACHE, SPOTIPY_NUM_RECS
-from flask import session, request, redirect 
-import os 
-import uuid 
-
-if not os.path.exists(SPOTIPY_OAUTH_CACHE):
-    os.makedirs(SPOTIPY_OAUTH_CACHE)
-
-def session_cache_path():
-    return SPOTIPY_OAUTH_CACHE + session.get('uuid')
-
-def connect_spotify():
-    if not session.get('uuid'):
-        # Step 1. Visitor is unknown, give random ID
-        session['uuid'] = str(uuid.uuid4())
-    
-    cache_handler = spotipy.cache_handler.CacheFileHandler(cache_path=session_cache_path())
-    auth_manager = SpotifyOAuth(scope=SPOTIPY_SCOPE,
-                                        cache_handler=cache_handler, 
-                                        show_dialog=True)
-
-    if request.args.get("code"):
-        # Step 3. Being redirected from Spotify auth page
-        auth_manager.get_access_token(request.args.get("code"))
-        return redirect('/')
-
-    if not auth_manager.validate_token(cache_handler.get_cached_token()):
-        # Step 2. Display sign in link when no token
-        auth_url = auth_manager.get_authorize_url()
-        return f'<h2><a href="{auth_url}">Sign in</a></h2>'
-
-    # Step 4. Signed in, display data
-    sp = spotipy.Spotify(auth_manager=auth_manager)
-    # sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET, redirect_uri=SPOTIPY_REDIRECT_URI, scope=SPOTIPY_SCOPE, cache_path = SPOTIPY_OAUTH_CACHE))
-    return sp
-
-# def get_token(sp):
-#     # used https://stackoverflow.com/questions/25711711/spotipy-authorization-code-flow 
-#     access_token = sp.get_access_token()
-#     print(access_token)
-#     # access_token = token.get('access_token')
-
-#     if access_token:
-#         print("Access token available!")
-#         sp_obj = spotipy.Spotify(access_token)
-#         return sp_obj
-#     else:
-#         return None
 
 def get_available_genres(sp):
     return sp.recommendation_genre_seeds()['genres']
