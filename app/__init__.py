@@ -92,7 +92,7 @@ def create_app():
     app.config['SESSION_FILE_DIR'] = './.flask_session/'
     Session(app)
 
-    @app.route('/')
+    @app.route('/', methods = ['GET', 'POST'])
     def index():
         if not session.get('uuid'):
             # Step 1. Visitor is unknown, give random ID
