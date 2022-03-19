@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, make_response, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, session
 from flask_session import Session
 import sys
 from app import spotify # requires from app, needed to init Flask with "app" isntead of __name__
@@ -39,7 +39,7 @@ def create_app():
         auth_manager = spotipy.oauth2.SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID, 
                                                     client_secret=SPOTIPY_CLIENT_SECRET, 
                                                     redirect_uri=SPOTIPY_REDIRECT_URI,
-                                                      cache_handler = cache_handler
+                                                    cache_handler = cache_handler,
                                                     scope=SPOTIPY_SCOPE,
                                                     show_dialog=True)
        
