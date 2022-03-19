@@ -44,7 +44,7 @@ def create_app():
         if not auth_manager.validate_token(cache_handler.get_cached_token()):
             # Step 2. Display sign in link when no token
             auth_url = auth_manager.get_authorize_url()
-            return render_template('login.html', auth_url=auth_url)
+            return render_template('login.html', themes = app.config['THEMES'], auth_url=auth_url)
 
         # Step 4. Signed in, display data
         spotipy_obj = spotipy.Spotify(auth_manager=auth_manager)
