@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<head>
+<head class="container-head">
+    {% block head %}
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='themes/blue_lagoon.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='themes/espresso.css') }}">
@@ -17,16 +18,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Inter&family=Work+Sans&family=Poppins" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- <script>
-        $SCRIPT_ROOT = "{{ request.script_root|tojson }}"";    
-    </script> -->
+    {% endblock %}
 </head>
-<body>
+<main class="container-main">
     <div class="top-menu">
-        <div id="theme-dropdown">
+        {% block mainmenu %}
+        <div class="menu-item" id="signout">
+            <span id="signout-label">sign out</span>
+            <a class="menu-item-icon" href="/sign_out">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+        </div>
+        {% endblock %}
+        <div class="menu-item" id="project-github">
+            <span id="github-label">github</span>
+            <a class="menu-item-icon" href="https://github.com/veronicasih/sound-cafe" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
+        </div>
+        <div class="menu-item" id="theme-dropdown">
             <div id="trigger-theme-dropdown">
-                <i class="theme-icon fa-solid fa-palette"></i>
                 <span id="theme-dropdown-title">latte</span>
+                <i class="theme-icon fa-solid fa-palette"></i>
             </div>
             <div id="theme-dropdown-content">
                 <div id="theme-instructions">Select a custom theme!</div>
@@ -39,7 +52,10 @@
             </div>
         </div>
     </div>
+    {% block title %}
     <h1 class="animate__animated animate__swing"> <i>sound</i> <span><u>cafe</u></span> </h1>
+    {% endblock %}
+    {% block content %}
     <div id="instructions">
         <p id="pg-description">Select up to five genres and discover your new favorite songs!</p>
     </div>
@@ -56,4 +72,5 @@
         <input type="submit" class="main-button" id="get-playlist-bttn" name="loadPlaylistBttn" value="Generate Playlist">
     </div>
     <div class="recommended-playlist" id="playlist"> </div> 
-</body>
+    {% endblock %}
+</main>

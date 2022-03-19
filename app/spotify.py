@@ -1,5 +1,4 @@
 import spotipy
-# from spotipy.oauth2 import SpotifyOAuth
 from app.config import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, SPOTIPY_REDIRECT_URI, SPOTIPY_SCOPE, SPOTIPY_OAUTH_CACHE, SPOTIPY_NUM_RECS
 
 def get_available_genres(sp):

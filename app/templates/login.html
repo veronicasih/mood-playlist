@@ -1,45 +1,20 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='themes/blue_lagoon.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='themes/espresso.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='themes/latte.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='themes/matcha.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='themes/mint_choco_chip.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='themes/pink_lemonade.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='themes/taro.css') }}">
-    <link rel= "stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-    <title>sound cafe</title>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script id='jsFile' src="{{url_for('static', filename='interactions.js')}}"></script>
-    <script src="https://kit.fontawesome.com/3482ed8156.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Inter&family=Work+Sans&family=Poppins" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-</head>
-<body>
-    <div class="top-menu">
-        <div id="theme-dropdown">
-            <div id="trigger-theme-dropdown">
-                <i class="theme-icon fa-solid fa-palette"></i>
-                <span id="theme-dropdown-title">latte</span>
-            </div>
-            <div id="theme-dropdown-content">
-                <div id="theme-instructions">Select a custom theme!</div>
-            {% for themeId, themeInfo in themes.items() %}
-                <div class="theme" id="{{ themeId }}" onclick="changeTheme('{{ themeId }}', '{{themeInfo.name}}')">
-                    {{ themeInfo.name }}
-                </div>
-                <div class="theme-divider"></div>
-            {% endfor %}
-            </div>
-        </div>
-    </div>
-    <h1 class="animate__animated animate__swing"> <i>sound</i> <span><u>cafe</u></span> </h1>
-    <p>Explore new music genres, and find new songs on Spotify! </p>
-    <p>A project brought to you by Veronica Sih.</p>
-    <div class="flex-parent-center">
-        <button id="login-button" class="main-button" type="button" onclick="location.href='{{auth_url}}';">Sign In</button>
-    </div>
-</body>
+{% extends "index.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block mainmenu %}
+{% endblock %}
+{% block title %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+<div class="flex-parent-center">
+    <p class="login-intro">Explore music genres on the Sound Cafe! Choose one to five genres, and let the Sound Cafe find you the perfect playlist. Don't forget to choose a theme that matches your favorite drink!</p>
+</div>
+<div class="flex-parent-center">
+    <p class="login-intro">A project brought to you by Veronica Sih. Send me an <mark><a href="mailto:veronicasih18@gmail.com">email</a></mark> or find me on <mark><a href="https://www.linkedin.com/in/veronicasih/">LinkedIn</a></mark>.</p>
+</div>
+<div class="flex-parent-center">
+    <button id="login-button" class="main-button" type="button" onclick="location.href='{{auth_url}}';">Sign In</button>
+</div>
+{% endblock %}

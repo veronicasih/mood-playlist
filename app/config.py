@@ -1,6 +1,6 @@
 SPOTIPY_CLIENT_ID = '131e5f29b8a74b3e94d096242f9db07a'
 SPOTIPY_CLIENT_SECRET = '01aa06b2f462458998a8e25f6b8036db'
-SPOTIPY_REDIRECT_URI = 'https://sound-cafe.herokuapp.com' # 'http://127.0.0.1:5000/' 
+SPOTIPY_REDIRECT_URI = 'https://sound-cafe.herokuapp.com'  
 SPOTIPY_SCOPE = 'user-library-modify streaming playlist-modify-private'
 SPOTIPY_OAUTH_CACHE = './.spotify_caches/'
 SPOTIPY_NUM_RECS = 10

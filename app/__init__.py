@@ -58,7 +58,17 @@ def create_app():
         else: 
             return render_template('index.html', genres = available_genres, themes = app.config['THEMES'])
 
+    @app.route('/sign_out')
+    def sign_out():
+        try:
+            # Remove the CACHE file (.cache-test) so that a new user can authorize.
+            os.remove(session_cache_path())
+            session.clear()
+        except OSError as e:
+            print ("Error: %s - %s." % (e.filename, e.strerror))
+        return redirect('/')
     return app
+
 
 if __name__ == '__main__':
     app = create_app()
