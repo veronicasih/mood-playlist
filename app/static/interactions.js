@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('button').on('click', function() {
+    $('.genre').on('click', function() {
         var thisGenreId= $(this).attr('id');
         var icon = document.getElementById(thisGenreId).children[0]; 
         if ($(this).is('.unselected-genre')) {

@@ -45,7 +45,7 @@
     </div>
     <div class="genre-list">
         {% for genre in genres %}
-            <button type="button" class="unselected-genre" id="genre-{{loop.index}}" value="{{genre}}">
+            <button type="button" class="genre unselected-genre" id="genre-{{loop.index}}" value="{{genre}}">
                 {{ genre }}
                 <i class="genre-icon fa-solid fa-plus"></i>
             </button>

@@ -28,6 +28,16 @@ body {
     font-size: 1em;
     color: var(--body-text-color);
 }
+p {
+    text-align: center;
+}
+.flex-parent-center {
+    display: flex;
+    justify-content: center;
+}
+#login-button {
+    margin-top: 20px;
+}
 @keyframes gradient {
 	0% {
 		background-position: 50% 0%;
